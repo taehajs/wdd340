@@ -173,3 +173,22 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+#inv-display li {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background: #fff;
+}
+
+#inv-display img {
+  max-width: 100%;
+  height: auto;
+}
