@@ -7,7 +7,7 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 
 router.get("/detail/:invId", invController.buildById);
 
-router.get("trigger-error", invController.triggerError);
+router.get("/trigger-error", invController.triggerError);
 
 
 module.exports = router;
