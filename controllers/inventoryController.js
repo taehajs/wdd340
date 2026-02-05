@@ -2,7 +2,6 @@ const invModel = require("../models/inventory-model");
 const classificationModel = require("../models/classification-model");
 const utilities = require("../utilities");
 
-
 async function buildByClassificationId(req, res, next) {
   try {
     const classificationId = req.params.classificationId;
@@ -15,10 +14,34 @@ async function buildByClassificationId(req, res, next) {
       nav,
       grid
     });
-
-  } catch (error)  { 
+  } catch (error) {
     next(error);
   }
 }
 
-module.exports = { buildByClassificationId };
+async function buildById(req, res, next) {
+  try {
+    const invId = req.params.invId;
+    const data = await invModel.getVehicleById(invId);
+    const classifications = await classificationModel.getClassifications();
+    const nav = utilities.buildNav(classifications);
+    res.render("inventory/detail", {
+      title: data.inv_make + " " + data.inv_model,
+      nav,
+      vehicle: data
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+function triggerError(req, res, next) {
+  try {
+    throw new Error("This is a test error!");
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { buildByClassificationId, buildById, triggerError };
+
