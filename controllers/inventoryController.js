@@ -2,7 +2,7 @@ const invModel = require("../models/inventory-model")
 const classificationModel = require("../models/classification-model")
 const utilities = require("../utilities")
 
-exports.showManagement = async function (req, res, next) {
+async function showManagement(req, res, next) {
   try {
     const classifications = await classificationModel.getClassifications()
     const nav = utilities.buildNav(classifications)
@@ -141,3 +141,4 @@ module.exports = {
   buildById,
   triggerError
 }
+
