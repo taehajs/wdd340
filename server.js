@@ -46,3 +46,6 @@ const host = process.env.HOST || "localhost"
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
+
+const baseRoute = require("./routes/index")
+app.use("/", baseRoute)
